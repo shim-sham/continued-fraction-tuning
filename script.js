@@ -1,16 +1,49 @@
 const pythag = document.getElementById("pythagorean");
 const inton = document.getElementById("just-intonation");
+const equal = document.getElementById("equal")
 pythag.addEventListener('click',()=>{
     if (!pythag.classList.contains("on")){
         pythag.classList.add("on");
-        inton.classList.remove("on");
+        if (inton.classList.contains("on")){
+            inton.classList.remove("on");
+        }
+        if (equal.classList.contains("on")){
+            equal.classList.remove("on");
+        }
     }
+    console.log(pythag.classList)
+    console.log(inton.classList)
+    console.log(equal.classList)
+
+
 })
 inton.addEventListener('click',()=>{
     if (!inton.classList.contains("on")){
         inton.classList.add("on");
-        pythag.classList.remove("on");
+        if (pythag.classList.contains("on")){
+            pythag.classList.remove("on");
+        }
+        if (equal.classList.contains("on")){
+            equal.classList.remove("on");
+        }
     }
+    console.log(pythag.classList)
+    console.log(inton.classList)
+    console.log(equal.classList)
+})
+equal.addEventListener('click',()=>{
+    if (!equal.classList.contains("on")){
+        equal.classList.add("on");
+        if (pythag.classList.contains("on")){
+            pythag.classList.remove("on");
+        }
+        if (inton.classList.contains("on")){
+            inton.classList.remove("on");
+        }
+    }
+    console.log(pythag.classList)
+    console.log(inton.classList)
+    console.log(equal.classList)
 })
 const map = {
     'mi2': 'minor second',
