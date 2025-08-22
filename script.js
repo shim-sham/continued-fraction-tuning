@@ -107,3 +107,4 @@ function calculatePythagRatio(fifthsNeeded){
     console.log(nume,denom);
     return[nume,denom];
 }
+

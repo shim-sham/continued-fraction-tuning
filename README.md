@@ -9,6 +9,13 @@ This is inspired by <a href = "https://www.whitman.edu/Documents/Academics/Mathe
 A *lot* of research on the systems of tuning was put into this to find out exactly how each one works. <br>
 I tried getting the maths parts done first, and *then* i added css and outputting to screen.
 ## what I struggled with and what I learned
-- learnt that pythagorean tuning starts descending in perfect fifths from minor second onwards, to create a more accurate system.
+- learnt that Pythagorean tuning starts descending in perfect fifths from minor second onwards, to create a more accurate system.
 - learnt about Math.pow
-<br><br>
+
+## for anyone who's interested...
+### pythagorean scale
+this scale has actually been in use since Ancient Mesopotamia! there are two main intervals that correspond to frequency ratios.
+- an octave leap = multiplying the frequency by 2
+- a perfect fifth up = multiplying the frequency by 3/2.
+
+essentially, the whole scale is tuned to the first note. you move up or down in perfect fifths (3/2), and adjust the octaves (2) to keep the notes in the range of one octave. <br>the problem with this tuning system is that it creates something called the 'Pythagorean Comma', which is a small gap that is made quite obvious when you close the circle of fifths; if you move up 12 perfect fifths, you're *supposed* to be 7 octaves above your starting note. however, (3/2)^12 != 2^7. some specific intervals will sound just slightly out of tune because of this discrepancy.
