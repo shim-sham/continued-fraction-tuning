@@ -2,8 +2,9 @@ const pythag = document.querySelectorAll('[id="pythagorean"]');
 const helm = document.getElementById("helmholtz");
 const equal = document.getElementById("equal-temp");
 const synth = new Tone.Synth().toDestination();
-
+const freqIndicator = document.getElementById("freq-ind")
 let currentTuning ="pythag"
+
 pythag.forEach(element => {
     element.addEventListener('click',()=>{
         currentTuning="pythag"
@@ -72,7 +73,9 @@ Object.entries(map).forEach(([buttonId, intName]) => {
     button.addEventListener('click', () => {
         interval = intervalInfo.find(x => x.name === intName)
         if (currentTuning=="pythag"){
-            calculatePythag(interval.fifthsNeeded)
+            freqIndicator.innerText = "frequency last played (1 d.p.): "+ calculatePythag(interval.fifthsNeeded)
+        }else if (currentTuning=="helm"){
+            freqIndicator.innerText = "frequency last played (1 d.p.): "+ soundHelm(interval)
         }
     })
 })
@@ -80,54 +83,66 @@ const intervalInfo = [
     {
         name:"tonic",
         pythagorean:[1,1],
+        helmholtz:[1,1],
         fifthsNeeded:0
     },{
         name:"minor second",
         pythagorean: [256,243], //for checking if it's working!
+        helmholtz:[16,15],
         fifthsNeeded:-5
     },{
         name:"major second",
-        pythagorean: [9,8],
+        pythagorean: [9,8], 
+        helmholtz: [9,8],// p5 + p5, same as pythag
         fifthsNeeded:2
     },{
         name:"minor third",
         pythagorean: [32,27],
+        helmholtz:[6,5],
         fifthsNeeded:-3
     },{
         name:"major third",
         pythagorean: [81,64],
+        helmholtz:[5,4],
         fifthsNeeded:4
     },{
         name:"perfect fourth",
         pythagorean: [4,3],
+        helmholtz:[4,3],
         fifthsNeeded:-1
     },{
         name:"augmented fourth",
         pythagorean: [729,512],
+        helmholtz:[45,32],
         fifthsNeeded:6
     }, {
         name:"perfect fifth",
         pythagorean: [3,2],
+        helmholtz:[3,2],
         fifthsNeeded:1
     },{
         name:"minor sixth",
         pythagorean: [128,21],
+        helmholtz:[8,5], //perf4 + mi3 = 4:3 * 6:5= 24:15
         fifthsNeeded:-4
     }, {
         name:"major sixth",
         pythagorean: [27,16],
+        helmholtz:[5,3], //same as mi6 but w ma3 instead of mi3
         fifthsNeeded:3
     }, {
         name:"minor seventh",
-        pythagorean: [16,9],
+        pythagorean: [16,9], // perf5 + mi3 = 3/2 * 6/5
         fifthsNeeded:-2
     }, {
         name:"major seventh",
         pythagorean: [243,128],
+        helmholtz:[15,8],
         fifthsNeeded:5
     }, {
         name:"octave",
         pythagorean: [2,1],
+        helmholtz:[2,1],
         fifthsNeeded:12
     }, 
 ]
@@ -149,14 +164,18 @@ function calculatePythag(fifthsNeeded){
     }
     while(tempRatio<1){
         tempRatio*=2;
-        nume = nume*2
+        nume = nume*2;
     }
     console.log(nume,denom);
-    frequency = 261.63*nume/denom
+    frequency = 261.63*nume/denom;
     synth.triggerAttackRelease(frequency, "8n");
-    return[nume,denom];
+    return frequency.toFixed(1);
 }
 
-function calculateHelm(fifthsNeeded){
-
+function soundHelm(interval){
+    let nume,denom;
+    [nume,denom] = interval.helmholtz;
+    frequency = 261.63*nume/denom;
+    synth.triggerAttackRelease(frequency, "8n");
+    return frequency.toFixed(1);
 }
