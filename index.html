@@ -4,9 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>continued fraction project</title>
+        <script src="http://unpkg.com/tone"></script>
+
     </head>
     <body>
         <h1>tuning systems.</h1>
+        <button id="ton">tonic</button>
         <button id="mi2">minor second</button>
         <button id="ma2">major second</button>
         <button id="mi3">minor third</button>
@@ -30,7 +33,7 @@
         <li>a perfect fifth up = multiplying the frequency by 3/2.</li>
         </ul>
         <p>essentially, the whole scale is tuned to the first note. you move up or down in perfect fifths (3/2), and adjust the octaves (2) to keep the notes in the range of one octave. 
-        <br>the problem with this tuning system is that it creates something called the "Pythagorean Comma", which is a small gap that is made quite obvious when you close the circle of fifths; if you move up 12 perfect fifths, you're <em>supposed</em> to be 7 octaves above your starting note. however, (3/2)^12 != 2^7. some specific intervals will sound just slightly out of tune because of this discrepancy.<br>
+        <br>the problem with this tuning system is that it creates something called the "Pythagorean Comma", which is a small gap that is made quite obvious when you close the circle of fifths; if you move up 12 perfect fifths, you're <em>supposed</em> to be 7 octaves above your starting note. however, (3/2)^12 != 2^7. some specific intervals will sound just slightly out of tune because of this discrepancy. compare tonic with octave to hear the difference.<br>
         this is all caused by our two main frequency ratios. we are trying to make an equation that is based on tripling (perfect fifths) be equal to an equation based on doubling; we're trying to solve 2^x = 3^y, where x and y are rational.</p>
         
         <h3 >2. Helmholtz's scale</h3>

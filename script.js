@@ -1,10 +1,14 @@
 const pythag = document.querySelectorAll('[id="pythagorean"]');
 const helm = document.getElementById("helmholtz");
 const equal = document.getElementById("equal-temp");
+const synth = new Tone.Synth().toDestination();
+
+let currentTuning ="pythag"
 pythag.forEach(element => {
     element.addEventListener('click',()=>{
+        currentTuning="pythag"
         if (!element.classList.contains("on")){
-            pythag.classList.forEach(element => { element.add("on")});
+            pythag.forEach(element => { element.classList.add("on")});
             if (helm.classList.contains("on")){
                 helm.classList.remove("on");
             }
@@ -18,6 +22,7 @@ pythag.forEach(element => {
     })
 })
 helm.addEventListener('click',()=>{
+    currentTuning="helm"
     if (!helm.classList.contains("on")){
         helm.classList.add("on");
         //if (pythag.classList.contains("on")){ was getting too complicated
@@ -33,6 +38,7 @@ helm.addEventListener('click',()=>{
     console.log(equal.classList)
 })
 equal.addEventListener('click',()=>{
+    currentTuning="equal"
     if (!equal.classList.contains("on")){
         equal.classList.add("on");
        //if (pythag.classList.contains("on")){
@@ -47,6 +53,7 @@ equal.addEventListener('click',()=>{
     console.log(equal.classList)
 })
 const map = {
+    'ton': 'tonic',
     'mi2': 'minor second',
     'ma2': 'major second',
     'mi3': 'minor third',
@@ -64,11 +71,17 @@ Object.entries(map).forEach(([buttonId, intName]) => {
     const button = document.getElementById(buttonId);        
     button.addEventListener('click', () => {
         interval = intervalInfo.find(x => x.name === intName)
-        calculatePythagRatio(interval.fifthsNeeded)
+        if (currentTuning=="pythag"){
+            calculatePythag(interval.fifthsNeeded)
+        }
     })
 })
 const intervalInfo = [
     {
+        name:"tonic",
+        pythagorean:[1,1],
+        fifthsNeeded:0
+    },{
         name:"minor second",
         pythagorean: [256,243], //for checking if it's working!
         fifthsNeeded:-5
@@ -115,12 +128,12 @@ const intervalInfo = [
     }, {
         name:"octave",
         pythagorean: [2,1],
-        fifthsNeeded:0
+        fifthsNeeded:12
     }, 
 ]
 
 // i dont want to hardcode it - that's boringgg. let's try calculate these
-function calculatePythagRatio(fifthsNeeded){
+function calculatePythag(fifthsNeeded){
     let nume,denom
     if (fifthsNeeded>=0){
         nume = Math.pow(3,fifthsNeeded);
@@ -139,6 +152,11 @@ function calculatePythagRatio(fifthsNeeded){
         nume = nume*2
     }
     console.log(nume,denom);
+    frequency = 261.63*nume/denom
+    synth.triggerAttackRelease(frequency, "8n");
     return[nume,denom];
 }
 
+function calculateHelm(fifthsNeeded){
+
+}
