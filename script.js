@@ -133,6 +133,7 @@ const intervalInfo = [
     }, {
         name:"minor seventh",
         pythagorean: [16,9], // perf5 + mi3 = 3/2 * 6/5
+        helmholtz: [9,5],
         fifthsNeeded:-2
     }, {
         name:"major seventh",
