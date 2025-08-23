@@ -1,48 +1,49 @@
-const pythag = document.getElementById("pythagorean");
-const inton = document.getElementById("just-intonation");
-const equal = document.getElementById("equal")
-pythag.addEventListener('click',()=>{
-    if (!pythag.classList.contains("on")){
-        pythag.classList.add("on");
-        if (inton.classList.contains("on")){
-            inton.classList.remove("on");
+const pythag = document.querySelectorAll('[id="pythagorean"]');
+const helm = document.getElementById("helmholtz");
+const equal = document.getElementById("equal-temp");
+pythag.forEach(element => {
+    element.addEventListener('click',()=>{
+        if (!element.classList.contains("on")){
+            pythag.classList.forEach(element => { element.add("on")});
+            if (helm.classList.contains("on")){
+                helm.classList.remove("on");
+            }
+            if (equal.classList.contains("on")){
+                equal.classList.remove("on");
+            }
         }
-        if (equal.classList.contains("on")){
-            equal.classList.remove("on");
-        }
-    }
-    console.log(pythag.classList)
-    console.log(inton.classList)
-    console.log(equal.classList)
-
-
+        pythag.forEach(element=>{console.log(element.classList)})
+        console.log(helm.classList)
+        console.log(equal.classList)
+    })
 })
-inton.addEventListener('click',()=>{
-    if (!inton.classList.contains("on")){
-        inton.classList.add("on");
-        if (pythag.classList.contains("on")){
-            pythag.classList.remove("on");
-        }
+helm.addEventListener('click',()=>{
+    if (!helm.classList.contains("on")){
+        helm.classList.add("on");
+        //if (pythag.classList.contains("on")){ was getting too complicated
+        pythag.forEach(element => { element.classList.remove("on")});
+
+        //}
         if (equal.classList.contains("on")){
             equal.classList.remove("on");
         }
     }
-    console.log(pythag.classList)
-    console.log(inton.classList)
+    pythag.forEach(element=>{console.log(element.classList)})
+    console.log(helm.classList)
     console.log(equal.classList)
 })
 equal.addEventListener('click',()=>{
     if (!equal.classList.contains("on")){
         equal.classList.add("on");
-        if (pythag.classList.contains("on")){
-            pythag.classList.remove("on");
-        }
-        if (inton.classList.contains("on")){
-            inton.classList.remove("on");
+       //if (pythag.classList.contains("on")){
+        pythag.forEach(element => { element.classList.remove("on")});
+        //}
+        if (helm.classList.contains("on")){
+            helm.classList.remove("on");
         }
     }
-    console.log(pythag.classList)
-    console.log(inton.classList)
+    pythag.forEach(element=>{console.log(element.classList)})
+    console.log(helm.classList)
     console.log(equal.classList)
 })
 const map = {
@@ -69,7 +70,7 @@ Object.entries(map).forEach(([buttonId, intName]) => {
 const intervalInfo = [
     {
         name:"minor second",
-        pythagorean: [256,243],
+        pythagorean: [256,243], //for checking if it's working!
         fifthsNeeded:-5
     },{
         name:"major second",

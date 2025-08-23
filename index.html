@@ -6,11 +6,7 @@
         <title>continued fraction project</title>
     </head>
     <body>
-        <h1>tuning systems. (idk what this is yet?)</h1>
-        <p>kind of want a toggle here?... for switching between diff tuning systems...</p>
-        <div class="tuning-toggle">
-            <span>tuning system: </span> <button id="pythagorean" class = "on">pythagorean (ancient mesopotamian...)</button> <button id="just-intonation">just intonation</button> <button id="equal">equal temperament</button>
-        <p>let's just go with the flow icl</p>
+        <h1>tuning systems.</h1>
         <button id="mi2">minor second</button>
         <button id="ma2">major second</button>
         <button id="mi3">minor third</button>
@@ -23,7 +19,29 @@
         <button id="mi7">minor seventh</button>
         <button id="ma7">major seventh</button>
         <button id="oct">octave</button>
-            <script src = "script.js"></script>
+        <h3>1. Pythagorean Scale</h3>
+        <div class="tuning-toggle">
+            <span>tuning system: </span> <button id="pythagorean" class = "on">pythagorean (ancient mesopotamian...)</button>
+        </div>
+        
+        <p>this scale has actually been in use since Ancient Mesopotamia! there are two main intervals that correspond to frequency ratios.</p>
+        <ul>
+        <li>an octave leap = multiplying the frequency by 2</li>
+        <li>a perfect fifth up = multiplying the frequency by 3/2.</li>
+        </ul>
+        <p>essentially, the whole scale is tuned to the first note. you move up or down in perfect fifths (3/2), and adjust the octaves (2) to keep the notes in the range of one octave. 
+        <br>the problem with this tuning system is that it creates something called the "Pythagorean Comma", which is a small gap that is made quite obvious when you close the circle of fifths; if you move up 12 perfect fifths, you're <em>supposed</em> to be 7 octaves above your starting note. however, (3/2)^12 != 2^7. some specific intervals will sound just slightly out of tune because of this discrepancy.<br>
+        this is all caused by our two main frequency ratios. we are trying to make an equation that is based on tripling (perfect fifths) be equal to an equation based on doubling; we're trying to solve 2^x = 3^y, where x and y are rational.</p>
+        
+        <h3 >2. Helmholtz's scale</h3>
+        <div class="tuning-toggle">
+            <span>tuning system: </span> <button id="pythagorean" class = "on">pythagorean (ancient mesopotamian...)</button> <!-- <button id="equal-temp">equal temperament</button>--><button id="helmholtz">helmholtz</button>
+        </div>            
+        <p>so after the shenanigans with the pythagorean, musicians tried adding extra ratios such as 5/4 (major third), and 6/5 (minor third). this gave sweeter sounding chords. these specific ratios are called the Helmholtz's scale.
+            <br>however, this created new problems. following this system, a D is 9/8, and an A above that is 5/3. so the interval between them is 5/3 ÷ 9/8 = 40/27. this interval is a perfect fifth, so ideally this should be = to 3/2. the distance is off by 21.5 cents (the syntonic comma)</p>
+
+       <button id="equal-temp">equal temperament</button>
+        <script src = "script.js"></script>
 
     </body>
 
