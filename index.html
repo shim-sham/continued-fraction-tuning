@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>continued fraction project</title>
+        <title>tuning systems</title>
         <script src="http://unpkg.com/tone"></script>
 
     </head>
@@ -39,12 +39,19 @@
         
         <h3 >2. Helmholtz's scale (an example of Just Intonation)</h3>
         <div class="tuning-toggle">
-            <span>tuning system: </span> <button id="pythagorean" class = "on">pythagorean (ancient mesopotamian...)</button> <!-- <button id="equal-temp">equal temperament</button>--><button id="helmholtz">helmholtz</button>
+            <span>tuning system: </span> <button id="pythagorean" class = "on">pythagorean (ancient mesopotamian...)</button> <button id="helmholtz">helmholtz</button>
         </div>            
         <p>so after the shenanigans with the pythagorean, musicians tried adding extra ratios such as 5/4 (major third), and 6/5 (minor third). this gave sweeter sounding chords. these specific ratios make up the Helmholtz's scale.
             <br>however, this created new problems. following this system, a D is 9/8, and an A above that is 5/3. so the interval between them is 5/3 ÷ 9/8 = 40/27. this interval is a perfect fifth, so ideally this should be = to 3/2. the distance is off by 21.5 cents (the syntonic comma)</p>
+         <h3 >3. Equal temperament, the tuning we use today</h3>
+        <div class="tuning-toggle">
+            <span>tuning system: </span> <button id="pythagorean" class = "on">pythagorean (ancient mesopotamian...)</button> <button id="helmholtz">helmholtz</button> <button id="equal-temp">equal temperament</button>
+        </div>            
+        <p>there was a lot of playing around with ratios to try and even out this error across the notes, creating meantone temperament (makes fifths slightly smaller than 3:2, so major thirds sound nicer; this worked until you tried to play in different keys), and well temperament. 
+        <br>eventually, we got to equal temperament where the octave is divided equally into 12 notes. this means that the ratio 2:1 is equally split into 12 parts. therefore, the ratio between two adjacent notes is the 12th root of 2, 2<sup>1/12</sup> <br>
+        The two figures frequently credited with the achievement of exact calculation of equal temperament are Zhu Zaiyu in 1584 and Simon Stevin in 1585.</p>
 
-       <button id="equal-temp">equal temperament</button>
+       
         <script src = "script.js"></script>
 
     </body>
