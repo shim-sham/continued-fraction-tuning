@@ -73,7 +73,7 @@ Object.entries(map).forEach(([buttonId, intName]) => {
     button.addEventListener('click', () => {
         interval = intervalInfo.find(x => x.name === intName)
         if (currentTuning=="pythag"){
-            freqIndicator.innerText = "frequency last played (1 d.p.): "+ calcePythag(interval.fifthsNeeded)
+            freqIndicator.innerText = "frequency last played (1 d.p.): "+ calcPythag(interval.fifthsNeeded)
         }else if (currentTuning=="helm"){
             freqIndicator.innerText = "frequency last played (1 d.p.): "+ soundHelm(interval)
         }else if (currentTuning="equal"){
@@ -187,4 +187,5 @@ function calcEqual(interval){
     n = intervalInfo.indexOf(interval)
     frequency = 261.63 * Math.pow(2, n/12)
     synth.triggerAttackRelease(frequency,"8n")
+    return frequency.toFixed(1);
 }
