@@ -190,3 +190,15 @@ function calcEqual(interval){
     synth.triggerAttackRelease(frequency,"8n")
     return frequency.toFixed(1);
 }
+document.getElementById("next").addEventListener('click',()=>{
+    window.scrollTo({
+        top:window.innerHeight,
+        behavior:'smooth'
+    })
+})
+document.getElementById("next2").addEventListener('click',()=>{
+    window.scrollTo({
+        top:2*window.innerHeight,
+        behavior:'smooth'
+    })
+})
