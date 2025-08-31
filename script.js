@@ -192,13 +192,13 @@ function calcEqual(interval){
 }
 document.getElementById("next").addEventListener('click',()=>{
     window.scrollTo({
-        top:window.innerHeight,
+        top:2*window.innerHeight,
         behavior:'smooth'
     })
 })
 document.getElementById("next2").addEventListener('click',()=>{
     window.scrollTo({
-        top:2*window.innerHeight,
+        top:3*window.innerHeight,
         behavior:'smooth'
     })
 })
