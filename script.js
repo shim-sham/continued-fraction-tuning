@@ -1,5 +1,5 @@
 const pythag = document.querySelectorAll('[id="pythagorean"]');
-const helm = document.getElementById("helmholtz");
+const helm = document.querySelectorAll('[id="helmholtz"]');
 const equal = document.getElementById("equal-temp");
 const synth = new Tone.Synth().toDestination();
 const freqIndicator = document.getElementById("freq-ind")
@@ -10,33 +10,34 @@ pythag.forEach(element => {
         currentTuning="pythag"
         if (!element.classList.contains("on")){
             pythag.forEach(element => { element.classList.add("on")});
-            if (helm.classList.contains("on")){
-                helm.classList.remove("on");
-            }
+            helm.forEach(element => { element.classList.remove("on")});
             if (equal.classList.contains("on")){
                 equal.classList.remove("on");
             }
         }
         pythag.forEach(element=>{console.log(element.classList)})
-        console.log(helm.classList)
+        helm.forEach(element=>{console.log(element.classList)})
         console.log(equal.classList)
     })
 })
-helm.addEventListener('click',()=>{
-    currentTuning="helm"
-    if (!helm.classList.contains("on")){
-        helm.classList.add("on");
-        //if (pythag.classList.contains("on")){ was getting too complicated
-        pythag.forEach(element => { element.classList.remove("on")});
+helm.forEach(element => {
+    element.addEventListener('click',()=>{
+        currentTuning="helm"
+        if (!element.classList.contains("on")){
+            helm.forEach(element => { element.classList.add("on")});
 
-        //}
-        if (equal.classList.contains("on")){
-            equal.classList.remove("on");
+            //if (pythag.classList.contains("on")){ was getting too complicated
+            pythag.forEach(element => { element.classList.remove("on")});
+
+            //}
+            if (equal.classList.contains("on")){
+                equal.classList.remove("on");
+            }
         }
-    }
-    pythag.forEach(element=>{console.log(element.classList)})
-    console.log(helm.classList)
-    console.log(equal.classList)
+        pythag.forEach(element=>{console.log(element.classList)})
+        helm.forEach(element=>{console.log(element.classList)})
+        console.log(equal.classList)
+    })
 })
 equal.addEventListener('click',()=>{
     currentTuning="equal"
@@ -45,12 +46,12 @@ equal.addEventListener('click',()=>{
        //if (pythag.classList.contains("on")){
         pythag.forEach(element => { element.classList.remove("on")});
         //}
-        if (helm.classList.contains("on")){
-            helm.classList.remove("on");
-        }
+        //if (helm.classList.contains("on")){
+        helm.forEach(element => { element.classList.remove("on")});
+        //}
     }
     pythag.forEach(element=>{console.log(element.classList)})
-    console.log(helm.classList)
+    helm.forEach(element=>{console.log(element.classList)})
     console.log(equal.classList)
 })
 const map = {
